@@ -4,9 +4,9 @@ const getUser = async (req, res) => {
     try {
         const userData = req.body
         const [rows] = await user.getById(userData.id)
-        if (rows.lenght === 0) {
+        if (rows.length === 0) {
             res.status(404).json({
-                error: "Usuário não encontrado",
+                error: `Usuário id: ${userData.id} não Encontrado`
             })
         } else {
             res.json({
