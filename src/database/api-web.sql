@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 28-Ago-2023 às 22:52
+-- Tempo de geração: 04-Set-2023 às 22:36
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 8.0.13
 
@@ -24,6 +24,25 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `products`
+--
+
+CREATE TABLE `products` (
+  `id` int(11) NOT NULL,
+  `name` varchar(200) NOT NULL,
+  `price` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `products`
+--
+
+INSERT INTO `products` (`id`, `name`, `price`) VALUES
+(1, 'Celular Samsung', '2000');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `users`
 --
 
@@ -39,13 +58,19 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `pass`) VALUES
-(1, 'Carlos Yuri', 'carlosyurialvesbenedito@gmail.com', '12345678'),
+(1, 'Carlos Y.', 'carlosy@gmail.com', '555555'),
 (2, 'Jeje du grau', 'jejedomassagua012@gmail.com', '12345678'),
-(3, 'João', 'joao@gmail.com', '12345678');
+(4, 'Yuri', 'ola@gmail.com', '123456');
 
 --
 -- Índices para tabelas despejadas
 --
+
+--
+-- Índices para tabela `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Índices para tabela `users`
@@ -58,10 +83,16 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT de tabela `products`
+--
+ALTER TABLE `products`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT de tabela `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
