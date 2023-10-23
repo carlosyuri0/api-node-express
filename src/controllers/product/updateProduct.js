@@ -6,7 +6,7 @@ const updateProduct = async (req, res) => {
         const [result] = await product.updateProduct(productData)
         if (result.affectedRows === 1) {
             res.json({
-                succes: "Dados do produtot atualizados com Sucecsso!",
+                succes: "Dados do produto atualizados com Sucecsso!",
                 product: {
                     ...productData
                 }
