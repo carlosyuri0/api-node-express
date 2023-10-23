@@ -1,24 +1,32 @@
-import product from '../../models/productModel.js'
+import user from '../../models/userModel.js'
+import bcrypt from 'bcrypt'
 
-const insertProduct = async (req, res) => {
-    try {
-        const productData = req.body
-        const [result] = await product.createProduct(productData)
-        if (result.affectedRows === 1) {
-            res.json({
-                succes: "Produto inserido com Sucesso!",
-                product: {
-                    id: result.insertId,
-                    ...productData
-                }
+const insertUser = async (req, res) => {
+    try{
+        const userData = req.body
+        bcrypt.hash(userData.pass, 10, async (error, hash) => {
+            if (error) return res.status(500).json({
+                error: "Erro ao gerar senha criptografada!",
             })
-        }
-    } catch (error) {
+            userData.pass = hash
+            const [result] = await user.create(userData)
+            delete userData.pass
+            if(result.affectedRows === 1){
+                res.json({
+                    success: "Usuário inserido com Sucesso!",
+                    user: {
+                        id: result.insertId,
+                        ...userData
+                    }
+                })
+            }
+        })
+    } catch (error){
         console.log(error)
         res.status(500).json({
-            error: "Erro no Servidor"
+            error: "Erro no servidor!",
         })
     }
 }
 
-export default insertProduct
+export default insertUser
