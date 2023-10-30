@@ -1,10 +1,12 @@
-import express from 'express';
-import login from '../controllers/auth/login.js';
-import logout from '../controllers/auth/logout.js';
+import express from 'express'
+import login from '../controllers/auth/login.js'
+import loginToken from '../controllers/auth/loginToken.js'  
+import logout from '../controllers/auth/logout.js'
 
-const authRouter = express.Router();
+const router = express.Router()
 
-authRouter.post('/login', login)
-authRouter.delete('/logout', logout)
+router.post('/login', login)
+router.get('/login-token', loginToken)
+router.delete('/logout', logout)
 
-export default authRouter
+export default router
